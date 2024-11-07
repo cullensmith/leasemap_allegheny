@@ -1,9 +1,9 @@
 from django.shortcuts import render
-from .models import Wells_C
-from .models import Wells_U
-from .models import Parcels
-from .models import Points
-from .models import PolygonModel
+from .models import Wellsc
+from .models import Wellsu
+from .models import Parceldetails2
+# from .models import Points
+from .models import PolyModel
 from django.http import HttpResponse
 from django.http import JsonResponse
 from django.db.models.functions import Substr
@@ -33,7 +33,7 @@ def getMask(request):
 
 
 def polygon_geojson_view(request):
-    polygons = PolygonModel.objects.all()  # Query all polygons
+    polygons = PolyModel.objects.all()  # Query all polygons
     features = []
     for i,polygon in enumerate(polygons):
         # if i > 5:
@@ -58,7 +58,7 @@ def polygon_geojson_view(request):
     return JsonResponse(geojson_collection)
 
 def get_wellsc(request):
-    pts = Wells_C.objects.all()  # Query all polygons
+    pts = Wellsc.objects.all()  # Query all polygons
     features = []
     for i,pt in enumerate(pts):
         # if i > 5:
@@ -83,7 +83,7 @@ def get_wellsc(request):
     return JsonResponse(geojson_collection)
 
 def get_wellsu(request):
-    pts = Wells_U.objects.all()  # Query all polygons
+    pts = Wellsu.objects.all()  # Query all polygons
     features = []
     for i,pt in enumerate(pts):
         # if i > 5:
@@ -166,7 +166,7 @@ def filteredparcels(request):
     filter_kwargs.update({'munidesc__in':md})
     filter_kwargs.update({'schooldesc__in':sd})
     filter_kwargs.update({'classdesc__in':zoning})
-    polygons = Parcels.objects.filter(**filter_kwargs)
+    polygons = Parceldetails2.objects.filter(**filter_kwargs)
     print('here there are')
     print(polygons)
     print('we get any?')
@@ -200,7 +200,7 @@ def get_matches(request):
     print('grabbing filtered pins')
     print(request)
     p = request.GET.getlist('pin')[0]
-    polygons = Parcels.objects.filter(Q(pin = p))
+    polygons = Parceldetails2.objects.filter(Q(pin = p))
     # for r in polygons:
     #     print(f'doc number: {r.doc_num}, deed url: {r.dv_url}')
     # print('those were it')
@@ -242,7 +242,7 @@ def get_matches(request):
 
 def parcels(request):
     print('grabbing parcels')
-    polygons = Parcels.objects.all()
+    polygons = Parceldetails2.objects.all()
     polygons_data = []
 
     for polygon in polygons:

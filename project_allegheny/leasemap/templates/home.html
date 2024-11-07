@@ -28,7 +28,6 @@
         #map { /* Style the map container */
             height: 100%;
             width: 100%;
-            {% comment %} float: right; {% endcomment %}
         }
         .container {
             display: flex;
@@ -42,37 +41,29 @@
             color: white;
             display: flex;
             align-items: center;
-            {% comment %} justify-content: center; {% endcomment %}
         }
 
         .bottom {
             display: flex;
-            {% comment %} align-items: center; {% endcomment %}
         }
         .left {
             width: 15%;
             height: 100%;
-            {% comment %} background-color: #2196F3; {% endcomment %}
             color: white;
-            {% comment %} padding: 20px; {% endcomment %}
             box-sizing: border-box;
         }
         .middle {
             width: 75%;
             background-color: #FF5722;
             color: white;
-            {% comment %} padding: 20px; {% endcomment %}
             box-sizing: border-box;
         }
-        .right (
+        .right {
             width: 20%;
             height: 100%;
             margin-right: 0;
-            {% comment %} padding: 20px; {% endcomment %}
             box-sizing: border-box;
-            {% comment %} align-items: right; {% endcomment %}
-            {% comment %} justify-content: right; {% endcomment %}
-        )
+        }
         #projectlogo { 
 
         }
@@ -81,11 +72,9 @@
             padding-bottom: 3%;
             height: 5%;
             width: 100%;
-            {% comment %} background-color: white; {% endcomment %}
             float: left;
         }
         .leaflet-control-geocoder {
-            {% comment %} margin-bottom: 25px !important; {% endcomment %}
          }
 
         .leaflet-control-geocoder-form input{
@@ -95,35 +84,26 @@
          }
         #rightside { /* Style the sidebar */
             width: 100%; /* Take 10% of the screen width */
-            {% comment %} min-width: 200px; {% endcomment %}
             padding-left: 20px;
             height: 89vh;
-            {% comment %} margin-top: 6vh; {% endcomment %}
             background-color: #eaeaea;
             float: right; /* Float sidebar to the left */
             font-family: Arial;
             color: #31322e;
             overflow: auto;
-            {% comment %} max-height: 90%; {% endcomment %}
-            {% comment %} max-width:15%; {% endcomment %}
         }
         /* Style the content inside the sidebar */
         #rightside-content {
-            {% comment %} margin-top: -20px; {% endcomment %}
-            {% comment %} padding: 20px; {% endcomment %}
+
         }
         #sidebar { /* Style the sidebar */
             width: 100%; /* Take 10% of the screen width */
-            {% comment %} min-width: 200px; {% endcomment %}
             height: 89vh;
-            {% comment %} margin-top: 6vh; {% endcomment %}
             background-color: #31322e;
             float: left; /* Float sidebar to the left */
             font-family: Arial;
             color: #dadada;
             overflow: auto;
-            {% comment %} max-height: 90%; {% endcomment %}
-            {% comment %} max-width:15%; {% endcomment %}
         }
 
         /* Style the content inside the sidebar */
@@ -191,13 +171,11 @@
         .r_filter h4 {
             cursor: pointer;
             margin-bottom: 5px;
-            {% comment %} color: #fff; {% endcomment %}
             position: relative;
 
         }
         
         .r_filter h4::after {
-            {% comment %} content: '+'; {% endcomment %}
             float: right;
             position: absolute;
             right: 0;
@@ -205,8 +183,6 @@
 
         .r_filter h2 {
             cursor: pointer;
-            {% comment %} margin-bottom: 5px; {% endcomment %}
-            {% comment %} color: #000; {% endcomment %}
             position: relative;
 
         }
@@ -232,7 +208,6 @@
             padding: 15px;
             overflow-y: auto;
             max-height: 190px;
-            {% comment %} display: flex; {% endcomment %}
             margin: 15px;
         }
 
@@ -253,10 +228,7 @@
             font-size: 12px;
         }
 
-        {% comment %} /* Map layers container style */
-        #map-layers {
-            margin-top: 20px;
-        } {% endcomment %}
+
 
         .dropdown {
             color: #ff0101;
@@ -380,15 +352,14 @@
             cursor: pointer;
             font-size: 16px;
         }
-        #dataContainer(
+        #dataContainer{
             background-color: red;
             color: yellow;
-            {% comment %} padding: 20px; /* Padding for spacing */ {% endcomment %}
-            border-radius: 10px; /* Rounded corners */
-            max-width: 600px; /* Maximum width of the container */
-            margin: 0 auto; /* Center the container */
-            text-align: center; /* Center the text inside the container */
-        )
+            border-radius: 10px; 
+            max-width: 600px; 
+            margin: 0 auto; 
+            text-align: center; 
+        }
     </style>
 </head>
 <body>
@@ -1261,15 +1232,10 @@
                         debug: 0,
                         style: geojsonStyle
                     }; 
-                    {% comment %} map.removeLayer(vectorTileLayerF); {% endcomment %}
-                    {% comment %} vectorTileLayerF = L.geoJson.vt(data, options).addTo(map); {% endcomment %}
+
                     console.log('added the filtered polygons');
                     
-                    {% comment %} const geojsonStyle = {
-                        color: 'green',        // Stroke color
-                        fillColor: 'red',      // Fill color
-                        fillOpacity: 0.5       // Fill opacity
-                    }; {% endcomment %}
+
                     geojsonLayer = L.geoJSON(data, { 
                         style: geojsonStyle,
 
@@ -1339,14 +1305,7 @@
         }
 
 
-        {% comment %} function changeLink(c) {
-            // Get the anchor element by its ID
-            var link = document.getElementById('dvurl');
-            // Change the href attribute to "https://www.google.com"
-            link.href = c;
-            // Optionally, you can change the link text as well
-            link.innerText = 'Visit Google';
-        } {% endcomment %}
+
 
         document.getElementById('layer0').addEventListener('change', function() {
             if (this.checked) {
